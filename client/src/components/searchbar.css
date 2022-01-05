@@ -1,0 +1,17 @@
+
+.searchButton {
+    color:black;
+    background-color: rgb(116, 185, 88);
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 25px;
+    margin: 5px;
+    border-radius: 3px;
+    box-shadow: 3px 3px 5px 1px rgb(116, 185, 88);
+    cursor: pointer;
+}
+
+.searchButton:hover {
+    color:rgb(116, 185, 88);
+    background-color: rgb(231, 218, 218);
+}

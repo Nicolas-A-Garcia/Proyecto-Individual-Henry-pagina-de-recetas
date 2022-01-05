@@ -1,0 +1,45 @@
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 10px 5px 5px;
+    width: 500px;
+
+}
+
+.pages {
+   
+    display: flex;
+	height: 30px;
+    
+    justify-content: center;
+	box-shadow: 3px 5px 1px rgb(116, 185, 88);
+	padding: 0 20px;
+	border-radius: 7px;
+	background-color: rgb(231, 218, 218);
+}
+
+.page {
+    
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	padding: 0 5px;
+    block-size: auto;
+	color: black;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.8);
+	font-size: 17px;
+	letter-spacing: 0.1em;
+	line-height: 29px;
+    font-weight: 600;
+ 
+}
+
+
+.page a:hover {
+    background-color:rgb(116, 185, 88);
+    color: rgb(231, 218, 218);
+
+}
+
