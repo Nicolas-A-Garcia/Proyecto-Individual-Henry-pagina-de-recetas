@@ -19,7 +19,6 @@ const getApiInfo = async () => {
                 return {
                     title: result.title,
                     vegetarian: result.vegetarian,
-                    lowfodmap: result.lowFodmap,
                     vegan: result.vegan,
                     glutenFree: result.glutenFree,
                     dairyFree: result.dairyFree, 
@@ -30,13 +29,29 @@ const getApiInfo = async () => {
                     types: result.dishTypes?.map(element => element),  
                     diets: result.diets?.map(element => element), 
                     dishSummary:result.summary,
-                    steps: e.analyzedInstructions[0]?.steps.map(e => {
-                        return {
-                            number: e.number,
-                            step: e.step
-                        }
-                    })
-                }        
+                    steps: (result.analyzedInstructions[0] && result.analyzedInstructions[0].steps?result.analyzedInstructions[0].steps.map(item=>item.step).join(" \n"):'')
+                }
+                // return {
+                //     title: result.name,
+                //     vegetarian: result.vegetarian,
+                //     lowfodmap: result.lowFodmap,
+                //     vegan: result.vegan,
+                //     glutenFree: result.glutenFree,
+                //     dairyFree: result.dairyFree, 
+                //     image: result.image, 
+                //     id: result.id, 
+                //     score: result.spoonacularScore,
+                //     healthyFoodLevel: result.healthScore,
+                //     types: result.dishTypes?.map(element => element),  
+                //     diets: result.diets?.map(element => element), 
+                //     dishSummary:result.summary,
+                //     steps: e.analyzedInstructions[0]?.steps.map(e => {
+                //         return {
+                //             number: e.number,
+                //             step: e.step
+                //         }
+                //     })
+                // }        
             })
 
         return response;
@@ -67,6 +82,7 @@ const getDBInfo = async () => {
                 const infoTotal = apiInfo.concat(bdInfo)
                 return infoTotal
             }catch(err) {
+                console.log(err)
                 return ('error')
             }
          }
@@ -140,6 +156,7 @@ router.get('/', async (req, res) => {
         }else{
     
             const allDate = await getAllInfo() 
+            console.log(allDate)
         
             if (allDate !== 'error'){  
                 res.json(allDate);
@@ -198,9 +215,9 @@ router.get('/', async (req, res) => {
                 const obj = {
                     id: dataDB.id,
                     title: dataDB.title,
-                    dishSummary: dataDB.summary,
+                    dishSummary: dataDB.dishSummary,
                     score: dataDB.score,
-                    healthyFoodLevel: dataDB.healthScore,
+                    healthyFoodLevel: dataDB.healthyFoodLevel,
                     image: dataDB.image,
                     diets: dataDB.typeRecipes.map(s=> s.title),
                     steps: dataDB.steps,
